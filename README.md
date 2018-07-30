@@ -4,7 +4,7 @@
 
 Python code injection library
 
-Automatically generate shellcode and injects it into a target process
+Some useful functions for shellcode generation and code injection into a target process.
 
 ## pycIndolor
 
