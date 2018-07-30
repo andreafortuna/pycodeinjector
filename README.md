@@ -12,7 +12,7 @@ Simple PoC, useful for testing the library.
 
 Simply start the script passing target process and commands to inject and wait:
 
-![pycIndolor](media/pycIndolor.jpg "pycIndolor")
+![pycIndolor](media/pycIndolor.gif "pycIndolor")
 
 ## Please note
 
